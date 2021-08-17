@@ -32,31 +32,30 @@ public class Client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtvanban = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtmahoa = new javax.swing.JTextField();
         btngui = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtkhoa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txttrave = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Plaintexttxt = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Servertxt = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        DecryptedTexttxt = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtvanban.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtvanbanActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Văn bản ");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Văn bản sau khi mã hóa:");
 
+        btngui.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btngui.setText("Gửi");
         btngui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,57 +63,81 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        btnThoat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnThoat.setText("Thoát");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Khóa");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("CLIENT");
+        txtkhoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        jLabel4.setText("Khách hàng");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Server trả về:");
 
-        txttrave.setColumns(20);
-        txttrave.setRows(5);
-        jScrollPane1.setViewportView(txttrave);
+        Plaintexttxt.setColumns(20);
+        Plaintexttxt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Plaintexttxt.setRows(5);
+        jScrollPane2.setViewportView(Plaintexttxt);
+
+        Servertxt.setEditable(false);
+        Servertxt.setColumns(20);
+        Servertxt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Servertxt.setRows(5);
+        jScrollPane3.setViewportView(Servertxt);
+
+        DecryptedTexttxt.setEditable(false);
+        DecryptedTexttxt.setColumns(20);
+        DecryptedTexttxt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        DecryptedTexttxt.setRows(5);
+        jScrollPane4.setViewportView(DecryptedTexttxt);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btngui)
+                        .addGap(330, 330, 330))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(229, 229, 229))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtmahoa, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(51, 51, 51)
-                                    .addComponent(txtvanban, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel2))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtkhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(352, 352, 352)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(361, 361, 361)
-                            .addComponent(btnThoat))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(353, 353, 353)
-                            .addComponent(btngui))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel5))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtkhoa))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 101, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnThoat)
+                                .addGap(293, 293, 293)))))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(254, 254, 254)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                    .addGap(46, 46, 46)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,26 +145,29 @@ public class Client extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtvanban, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtkhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(3, 3, 3)
                 .addComponent(btngui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtmahoa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
                 .addComponent(btnThoat)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(324, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(210, 210, 210)))
         );
 
         pack();
@@ -178,7 +204,7 @@ public class Client extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
         DatagramSocket client = new DatagramSocket();
-        String vanban=txtvanban.getText();
+        String vanban= this.Plaintexttxt.getText();
         String khoa = (txtkhoa.getText());
         byte[] sendData=new byte[1024];
         byte[] sendKhoa = new byte[1024];
@@ -192,7 +218,7 @@ public class Client extends javax.swing.JFrame {
         //ma hoa van ban
         vanban=mahoa(vanban,KhoaClient);
         System.out.println(vanban);
-        txtmahoa.setText(vanban);
+        this.DecryptedTexttxt.setText(vanban);
         String chuoi=vanban+"/"+khoa;
         //chuyen doi du lieu thanh Byte de gui len Server
         sendData = chuoi.getBytes();        
@@ -211,17 +237,13 @@ public class Client extends javax.swing.JFrame {
         DatagramPacket packetnhan = new DatagramPacket(receiveData, receiveData.length,add, cong);
         client.receive(packetnhan);
         String Data = new String(packetnhan.getData(), 0, packetnhan.getLength());
-        txttrave.setText(Data);
+        this.DecryptedTexttxt.setText(Data);
         client.close();
 
         }catch(Exception e){
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnguiActionPerformed
-
-    private void txtvanbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtvanbanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtvanbanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +271,7 @@ public class Client extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -259,6 +282,9 @@ public class Client extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea DecryptedTexttxt;
+    private javax.swing.JTextArea Plaintexttxt;
+    private javax.swing.JTextArea Servertxt;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btngui;
     private javax.swing.JLabel jLabel1;
@@ -266,10 +292,9 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField txtkhoa;
-    private javax.swing.JTextField txtmahoa;
-    private javax.swing.JTextArea txttrave;
-    private javax.swing.JTextField txtvanban;
     // End of variables declaration//GEN-END:variables
 }
