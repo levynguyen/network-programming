@@ -58,8 +58,10 @@ public class Server extends javax.swing.JFrame {
     }
     private String TimViTri(String vanban){
         int counter[] = new int[256];
-        char kytu=vanban.charAt(0);
-        int max=counter[vanban.charAt(0)];
+        char kytu1=vanban.charAt(0);
+        char kytu2=vanban.charAt(0);
+        int max1=counter[vanban.charAt(0)];
+        int max2=counter[vanban.charAt(0)];
         int len = vanban.length();
         for (int i = 0; i < len; i++)
             counter[vanban.charAt(i)]++;
@@ -68,17 +70,35 @@ public class Server extends javax.swing.JFrame {
             array[i] = vanban.charAt(i);
             int flag = 0;
             for (int j = 0; j <= i; j++) {
-                if (vanban.charAt(i) == array[j])
+                if (Character.isWhitespace(array[i])){
+                    j++;
+                }
+                else if (vanban.charAt(i) == array[j])
                     flag++;
             }
+            System.out.println(flag);
             if (flag == 1)
-                if (counter[vanban.charAt(i)]>max){
-                    max=counter[vanban.charAt(i)];
-                    kytu=vanban.charAt(i);
+                 if (counter[vanban.charAt(i)]>max1){
+                    max2= max1;
+                    max1=counter[vanban.charAt(i)];
+                    kytu1=vanban.charAt(i);
+                }
+                else if(counter[vanban.charAt(i)] > max2)
+                {
+                    max2 = counter[vanban.charAt(i)];
+                    kytu2=vanban.charAt(i);
                 }
         }
-       String chuoi ="Số lần xuất hiện của " + kytu + " trong chuỗi:" + max;
-        return chuoi;
+        if (max2<max1){
+            String chuoi ="Ký tự '" + kytu1 + "' xuất hiện nhiều nhất trong chuỗi: " + max1 + " lần\n" + "Ký tự '" + kytu2 +"' xuất hiện nhiều thứ hai trong chuỗi: " + max2+" lần";        
+            return chuoi;
+        }else if (max2==max1){
+            String chuoi ="Ký tự '" + kytu1 + "', '"+kytu2+"' xuất hiện nhiều nhất trong chuỗi: " + max1 + " lần\n" + "Ký tự xuất hiện nhiều thứ hai trong chuỗi: không có";        
+            return chuoi;
+        }else {
+            String chuoi ="Ký tự '" + kytu2 + "' xuất hiện nhiều nhất trong chuỗi: " + max2 + " lần\n" + "Ký tự '" + kytu1 +"' xuất hiện nhiều thứ hai trong chuỗi: " + max1+" lần";        
+            return chuoi;
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -221,7 +241,7 @@ public class Server extends javax.swing.JFrame {
             vanban=giaima(vanban,Khoa);
             txtgiaima.setText(vanban);            
             sendData = TimViTri(vanban).getBytes();
-             // tạo packet để gửi về client
+            
             
 
 
@@ -234,6 +254,11 @@ public class Server extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
+            jButton1.setEnabled(false);
+            txttrangthai.setEnabled(false);
+            txtkhoa.setEnabled(false);
+            txtvanban.setEnabled(false);
+            txtgiaima.setEnabled(false);
             packetgui = new DatagramPacket(sendData, sendData.length, packetnhan.getAddress(), packetnhan.getPort());
             server.send(packetgui);
             server.close();

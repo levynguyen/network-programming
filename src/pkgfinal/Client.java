@@ -9,6 +9,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -174,45 +175,70 @@ public class Client extends javax.swing.JFrame {
             }
         }return kq;
     }
+    public static int isNumber(String str) { 
+        try {  
+          int khoa =Integer.parseInt(str);  
+          return khoa;
+        } catch(NumberFormatException e){  
+          return -1;  
+        }  
+    }
+
     private void btnguiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguiActionPerformed
         // TODO add your handling code here:
         try{
-        DatagramSocket client = new DatagramSocket();
-        String vanban=txtvanban.getText();
-        String khoa = (txtkhoa.getText());
-        byte[] sendData=new byte[1024];
-        byte[] sendKhoa = new byte[1024];
-        int KhoaClient = Integer.parseInt(khoa);
-       
-        
-        //khai bao dia chi may server
-        InetAddress add = InetAddress.getByName("localhost");
-        int cong= 9999;
-        
-        //ma hoa van ban
-        vanban=mahoa(vanban,KhoaClient);
-        System.out.println(vanban);
-        txtmahoa.setText(vanban);
-        String chuoi=vanban+"/"+khoa;
-        //chuyen doi du lieu thanh Byte de gui len Server
-        sendData = chuoi.getBytes();        
-        int length =chuoi.length();
-       
-        System.out.println("chuyen doi thành công");
-        
-        //packet gui du lieu len server
-        //packet luon co 4 tham so ( mảng byte cần gửi, chiều dài dữ liệu cần gửi, địa chỉ server, địa cổng server)
-        DatagramPacket packetgui=new DatagramPacket(sendData,length,add,cong);
-        client.send(packetgui);
-        System.out.println("Gửi thành công");
+            DatagramSocket client = new DatagramSocket();
+            String vanban=(txtvanban.getText()).trim();
+            String khoa = (txtkhoa.getText()).trim();
+            int KhoaClient=0;
+            if (khoa.length()==0 || vanban.length()==0){
+                System.out.println("Nhập văn bản ...");
+                JOptionPane.showMessageDialog(null,"Mời bạn nhập văn bản!!!");
+            }else{
+                byte[] sendData=new byte[1024];
+                byte[] sendKhoa = new byte[1024];
+                if (isNumber(khoa)==-1)
+                    JOptionPane.showMessageDialog(null,"Khóa phải là một số!!!");
+                else if (isNumber(khoa)<=0){
+                    JOptionPane.showMessageDialog(null,"Khóa phải là một số lớn hơn 0!!!");
+                }else{
+                    KhoaClient=isNumber(khoa);
 
-        //khai bao packet nhan du lieu
-        byte[] receiveData=new byte[1024];
-        DatagramPacket packetnhan = new DatagramPacket(receiveData, receiveData.length,add, cong);
-        client.receive(packetnhan);
-        String Data = new String(packetnhan.getData(), 0, packetnhan.getLength());
-        txttrave.setText(Data);
-        client.close();
+                    //khai bao dia chi may server
+                    InetAddress add = InetAddress.getByName("localhost");
+                    int cong= 9999;
+
+                    //ma hoa van ban
+
+                    vanban=mahoa(vanban,KhoaClient);
+                    System.out.println(vanban);
+                    txtmahoa.setText(vanban);
+                    String chuoi=vanban+"/"+khoa;
+                    //chuyen doi du lieu thanh Byte de gui len Server
+                    sendData = chuoi.getBytes();        
+                    int length =chuoi.length();
+
+                    System.out.println("chuyen doi thành công");
+                    txtvanban.setEnabled(false);
+                    txtkhoa.setEnabled(false);
+                    btngui.setEnabled(false);
+
+
+                    //packet gui du lieu len server
+                    //packet luon co 4 tham so ( mảng byte cần gửi, chiều dài dữ liệu cần gửi, địa chỉ server, địa cổng server)
+                    DatagramPacket packetgui=new DatagramPacket(sendData,length,add,cong);
+                    client.send(packetgui);
+                    System.out.println("Gửi thành công");
+
+                    //khai bao packet nhan du lieu
+                    byte[] receiveData=new byte[1024];
+                    DatagramPacket packetnhan = new DatagramPacket(receiveData, receiveData.length,add, cong);
+                    client.receive(packetnhan);
+                    String Data = new String(packetnhan.getData(), 0, packetnhan.getLength());
+                    txttrave.setText(Data);
+                    client.close();
+                }
+            }
 
         }catch(Exception e){
             e.printStackTrace();
